@@ -1,0 +1,17 @@
+@import '~antd/dist/antd.css';
+
+
+
+.App {
+  text-align: center;
+}
+.navheader{
+  margin-top: 10px;
+  color: black ! important;
+  background-color: #b3beca!important
+}
+.pageHeading{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color:black !important;
+}
