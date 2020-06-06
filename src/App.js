@@ -9,14 +9,16 @@ import MenuItem from 'antd/lib/menu/MenuItem';
 
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
-
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
 
 
 
-class  App extends React.Component(){
+
+class  App extends React.Component{
+    
     constructor(props){
+        super(props);
         this.state={
             dashboard:true,
             location1: false,
@@ -24,9 +26,6 @@ class  App extends React.Component(){
         }
     }
     render(){
-        var dashboard= true;
-        var location1= false;
-        var location2= false;
         return(
             <div className="container">
                  <Layout>
@@ -41,7 +40,11 @@ class  App extends React.Component(){
                        defaultSelectedKeys={["Dashboard"]}
                        mode="inline"
                        >
-                           <MenuItem key="Dashboard">Dashboard</MenuItem>
+                           <MenuItem onClick={()=>{
+                                       this.setState({dashboard:true,
+                                    location2:false,
+                                location1:false})
+                                   }} key="Dashboard">Dashboard</MenuItem>
                            <SubMenu
                            title={
                             <span>
@@ -52,39 +55,43 @@ class  App extends React.Component(){
                            >               
                                      <Menu.ItemGroup key="Aboutus" title="country ">
                                    <Menu.Item key="location1" onClick={()=>{
-                                       location1=true;
-                                       dashboard=false;
-                                       location2=false
+                                       this.setState({dashboard:false,
+                                    location1:true,
+                                location2:false})
                                    }}>Location</Menu.Item>
-                                   <Menu.Item key="location2">Location 2</Menu.Item> 
+                                   <Menu.Item key="location2" onClick={()=>{
+                                       this.setState({dashboard:false,
+                                    location2:true,
+                                location1:false})
+                                   }}>Location 2</Menu.Item> 
                                </Menu.ItemGroup>
                            </SubMenu>
                        </Menu>
                      </Sider>
                      <Layout> 
-                         {dashboard===true?
+                         {this.state.dashboard===true?
                          <Content style={{padding:'0 50px'}}>
                          <Breadcrumb style={{margin:'16px 0'}}>
                          <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
                           </Breadcrumb> 
-                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}> Content</div>
+                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}>This is the  Dashboard</div>
                       
                       </Content>:null}
                          
-                      {location1===true?
+                      {this.state.location1===true?
                          <Content style={{padding:'0 50px'}}>
                          <Breadcrumb style={{margin:'16px 0'}}>
-                         <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+                         <Breadcrumb.Item>Location 1</Breadcrumb.Item>
                           </Breadcrumb> 
-                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}> Location 1</div>
+                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}>This is Location 1</div>
                       
                       </Content>:null}
-                      {location2===true?
+                      {this.state.location2===true?
                          <Content style={{padding:'0 50px'}}>
                          <Breadcrumb style={{margin:'16px 0'}}>
-                         <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+                         <Breadcrumb.Item>Location 2</Breadcrumb.Item>
                           </Breadcrumb> 
-                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}> Location2</div>
+                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}>This is Location 2</div>
                       
                       </Content>:null}
                          <Footer style={{ textAlign: 'center' }}>Byte Design ©2020 Created by Thomas UED</Footer>
