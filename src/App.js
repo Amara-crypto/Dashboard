@@ -183,6 +183,7 @@ class  App extends React.Component{
                              <Expenses/>
                       </Content>:null}
                       {this.state.Account===true}
+                        <Account/>
                       <Content>
                       <React.Fragment>
                       <Router>

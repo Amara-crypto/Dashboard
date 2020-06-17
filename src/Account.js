@@ -1,12 +1,21 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import {Image} from  'react-bootstrap';
 
 const Account = () => (
   <Row>
-  <Col span={6}> <h2>About Page</h2>
-    <p>State at ceiling lay on arms while you're using the keyboard so this human feeds me.</p>
-    <p>I am a kitty cat, sup, feed me, no cares in the world</p>
-    <p>Meow meow, I tell my human purr for no reason but to chase after</p></Col>
-</Row>
+    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+      In this Column i will insert an image 
+      <Image src="./home/thomas/projects/Reactjs/dashboard/public/s10.jpg/171*180" />
+    </Col>
+    <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+      there will be an image in this column
+      <Image src="./home/thomas/projects/Reactjs/dashboard/public/s10.jpg/171*180" />
+    </Col>
+    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+    <Image src="./home/thomas/projects/Reactjs/dashboard/public/s10.jpg/171*180" />
+      imgae of a phone
+    </Col>
+  </Row>
 );
 export default Account
