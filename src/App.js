@@ -7,13 +7,28 @@ import { Menu } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import Account from './Account';
-import Expense from './Expense';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import EmployeePayroll from './EmployeePayroll';
+import Expenses from './Expenses';
+import { BrowserRouter as Router,Link, Route, Switch } from "react-router-dom";
 
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
+const routes = [
+    {
+        path: './Account',
+        key:1
+    },
+    {
+        path: './Expenses',
+        key:2
+    },
+    {
+        path:'./employee',
+        key:3
+    }
+]
 
 
 
@@ -23,16 +38,39 @@ class  App extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            dashboard:true,
+                activePath: null,
+                items: [
+                    {
+                      path: '/Account', /* path is used as id to check which NavItem is active basically */
+                      name: 'Account', 
+                      key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
+                    },
+                    {
+                      path: '/EmployeePayroll',
+                      name: 'EmployeePayroll', 
+                      key: 2
+                    },
+                    {
+                      path: '/Expenses',
+                      name: 'Epenses',                   
+                      key: 3
+                    },
+                  ]
+            
+          /*  dashboard:true,
             location1: false,
             location2:false,
-            account:false
+            account:false*/
         }
     }
+    OnItemClick =(path) => {
+        this.setState({activePath:path});
+    }
     render(){
+        const {items,activePath}= this.setState;
         return(
-            <div className="container">
-                 <Layout>
+            <div style={{flex:1}}>
+                 <Layout style={{flex:1}}>
                  <Header style={{padding:10 }} >
                      
                  <Title style={{color:"white"}} level={4}>Blue Tech</Title>
@@ -84,27 +122,17 @@ class  App extends React.Component{
                            }   
                            >               
                            </SubMenu>
+
                            <SubMenu
                            title={
                             <span>
                                <MailOutlined />
                                <span>Employees Payroll </span>
                             </span>
-                           }   
-                           >               
-                                <Menu.ItemGroup key="Aboutus" title="country ">
-                                   <Menu.Item key="location1" onClick={()=>{
-                                       this.setState({dashboard:false,
-                                    location1:true,
-                              location2:false,
-                                account :false})
-                                   }}>Location</Menu.Item>
-                                   <Menu.Item key="location2" onClick={()=>{
-                                       this.setState({dashboard:false,
-                                    location2:true,
-                                location1:false})
-                                   }}>Location 2</Menu.Item> 
-                               </Menu.ItemGroup>
+                           }>   
+                           <Link to={this.props.path} className={this.props.css} onClick={this.handleClick}>
+                            </Link>
+                           onClick={this.handleclick}               
                            </SubMenu>
                            <SubMenu
                            title={
@@ -130,12 +158,7 @@ class  App extends React.Component{
                                </Menu.ItemGroup>
                            </SubMenu>
                        </Menu>
-                       <Router>
-                      <Switch>
-                       <Route exact path="/Account" component={Account} />
-                       <Route path="/Expense" component={Expense} />
-                       </Switch>
-                      </Router>
+                    
                      </Sider>
                      <Layout> 
                          {this.state.dashboard===true?
@@ -157,21 +180,16 @@ class  App extends React.Component{
                       </Content>:null}
                       {this.state.location2===true?
                          <Content style={{padding:'0 50px'}}>
-                         <Breadcrumb style={{margin:'16px 0'}}>
-                         <Breadcrumb.Item>Location 2</Breadcrumb.Item>
-                          </Breadcrumb> 
-                          <div style={{background: '#FFF', padding:24, minHeight: 430,}}>This is Location 2</div>
-                      
+                             <Expenses/>
                       </Content>:null}
                       {this.state.Account===true}
                       <Content>
                       <React.Fragment>
                       <Router>
-                      <Switch>
-                         
-                        <Route exact path="/" component={Account} />
-                       
-                       
+                      <Switch>     
+                        <Route exact path="/Account" component={Account} />
+                        <Route exact path="/Employee Payroll" component={EmployeePayroll} />
+                        <Route exact path="/Expenses" component={Expenses} />                      
                         </Switch>
                         </Router>
                       </React.Fragment>
