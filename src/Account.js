@@ -10,7 +10,7 @@ const Account = () => (
     <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
       <view  style={{ paddingBottom:0, margin:0}}>
       <Image width='240' height='240' src={require('./images/s10.jpg')}/>
-      <span style={{color:'blue', fontweight:'bold' }}>Samsung S10</span>
+      <span style={{color:'blue', fontweight:'bold', alignItems:'center' }}>Samsung S10</span>
       </view>
       
     </Col>
