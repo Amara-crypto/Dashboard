@@ -112,7 +112,7 @@ class  App extends React.Component{
                             Expenses:false,               
                             EmployeePayroll:false,
                             account:true
-                            })}>Account </span> 
+                            })}>Phone </span> 
                             </span>
                            }   
                            >               
@@ -128,7 +128,7 @@ class  App extends React.Component{
                              Expenses:false,               
                              EmployeePayroll:true,
                              account:false
-                            })}>Employees Payroll </span>
+                            })}>Accessories </span>
                             </span>
                            }>            
                            </SubMenu>
@@ -136,7 +136,7 @@ class  App extends React.Component{
                            title={
                             <span>
                                <MailOutlined />
-                               <span>Expenses </span>
+                               <span>Tablet </span>
                             </span>
                            }   
                            >               
