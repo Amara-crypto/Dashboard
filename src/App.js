@@ -129,10 +129,7 @@ class  App extends React.Component{
                                <MailOutlined />
                                <span>Employees Payroll </span>
                             </span>
-                           }>   
-                           <Link to={this.props.path} className={this.props.css} onClick={this.handleClick}>
-                            </Link>
-                           onClick={this.handleclick}               
+                           }>            
                            </SubMenu>
                            <SubMenu
                            title={
