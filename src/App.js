@@ -15,20 +15,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
-const routes = [
-    {
-        path: './Account',
-        key:1
-    },
-    {
-        path: './Expenses',
-        key:2
-    },
-    {
-        path:'./employee',
-        key:3
-    }
-]
+
 
 
 
